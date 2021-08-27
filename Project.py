@@ -13,8 +13,8 @@ morph = pymorphy2.MorphAnalyzer()
 class FirstForm(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('Формы/main1(1).ui', self)
-        con = sqlite3.connect("База_данных/ZZZ.db")
+        uic.loadUi('main1(1).ui', self)
+        con = sqlite3.connect("ZZZ.db")
         cur = con.cursor()
         result = cur.execute("""SELECT * FROM Jornal
                             number""").fetchall()
@@ -371,7 +371,7 @@ class FirstForm(QMainWindow):
         Date = element.split('\n')[0]
         data = float(element.split('\n')[1].split(' = ')[0])
         action = element.split('\n')[1].split(' = ')[1]
-        with sqlite3.connect("База_данных/ZZZ.db") as con:
+        with sqlite3.connect("ZZZ.db") as con:
             cur = con.cursor()
             cur.execute(
                 "INSERT INTO Jornal(Date, data, action) VALUES('{}', '{}', ' = {}')".format(str(Date), float(data),
@@ -382,8 +382,8 @@ class FirstForm(QMainWindow):
 class SecondForm(QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi('Формы/Convert.ui', self)
-        con = sqlite3.connect("База_данных/ZZZ.db")
+        uic.loadUi('Convert.ui', self)
+        con = sqlite3.connect("ZZZ.db")
         cur = con.cursor()
         result = cur.execute("""SELECT * FROM Jornal
                                     number""").fetchall()
@@ -652,7 +652,7 @@ class SecondForm(QWidget):
         Date = element.split('\n')[0]
         data = float(element.split('\n')[1].split(' = ')[0])
         action = element.split('\n')[1].split(' = ')[1]
-        with sqlite3.connect("База_данных/ZZZ.db") as con:
+        with sqlite3.connect("ZZZ.db") as con:
             cur = con.cursor()
             cur.execute(
                 "INSERT INTO Jornal(Date, data, action) VALUES('{}', '{}', ' = {}')".format(str(Date), float(data),
